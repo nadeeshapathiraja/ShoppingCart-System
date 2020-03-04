@@ -1,0 +1,45 @@
+php artisan crud:generate Items --fields="name#string; item_code#string; price#double; photo#file; order_type#string; colour#string" --view-path=Admin --controller-namespace=Admin --form-helper=html
+
+php artisan crud:generate Citys --fields="name#string; price#double;" --view-path=Admin --controller-namespace=Admin --form-helper=html
+
+php artisan crud:generate Orders --fields="customer_name#string; item_id#integer; item_code#string; orderd_date#date; delivery_date#date; Location_address#string; city#string; " --foreign-keys="item_id#id#items;city_code#id#citys" --relationships="item_id#id#items#HasOneOrMany#App\Item; city_code#id#citys#HasOne#App\City" --view-path=admin --controller-namespace=Admin --route-group=admin --form-helper=html
+
+
+
+
+Districts
+
+Ampara
+Anuradhapura
+Badulla
+Batticaloa
+Colombo
+Galle
+Gampaha
+Hambantota
+Jaffna
+Kalutara
+Kandy
+Kegalle
+Kilinochchi
+Kurunegala
+Mannar
+Matale
+Matara
+Moneragala
+Mullaitivu
+Nuwara Eliya
+Polonnaruwa
+Puttalam
+Ratnapura
+Trincomalee
+Vavuniya
+
+
+
+
+
+
+
+
+
