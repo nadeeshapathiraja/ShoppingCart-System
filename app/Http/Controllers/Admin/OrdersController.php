@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Order;
 use App\Item;
 use App\City;
+use DB;
 
 use Illuminate\Http\Request;
 
@@ -60,7 +61,9 @@ class OrdersController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        $items= Item::get();
+        // $items= Item::get();
+        $item_names = DB::table('items')->select('name')->get();
+        return $item_names;
 
         return view('admin.orders.show', compact('order'));
 

@@ -42,9 +42,13 @@
                                         <th> Item Code </th>
                                         <td> {{ $order->item_code }} </td>
                                     </tr>
+                                    {{-- <tr>
+                                        <th> Item </th>
+                                        <td> {{ $item_names }} </td>
+                                    </tr> --}}
 
                                     <tr>
-                                        <th> Delivery </th>
+                                        <th> Delivery </th>$items
                                         <td>
                                             @if($order->deliverd)
                                                 <button class="btn btn-success">Completed</button>
