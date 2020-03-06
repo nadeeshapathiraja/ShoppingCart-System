@@ -1,9 +1,16 @@
-php artisan crud:generate Items --fields="name#string; item_code#string; price#double; photo#file; order_type#string; colour#string" --view-path=Admin --controller-namespace=Admin --form-helper=html
-
 php artisan crud:generate Citys --fields="name#string; price#double;" --view-path=Admin --controller-namespace=Admin --form-helper=html
 
-php artisan crud:generate Orders --fields="customer_name#string; item_id#integer; item_code#string; orderd_date#date; delivery_date#date; Location_address#string; city#string; " --foreign-keys="item_id#id#items;city_code#id#citys" --relationships="item_id#id#items#HasOneOrMany#App\Item; city_code#id#citys#HasOne#App\City" --view-path=admin --controller-namespace=Admin --route-group=admin --form-helper=html
+php artisan crud:generate Items --fields="name#string; item_code#string; price#double; photo#file; order_type#string; colour#string; quantity#integer;" --view-path=Admin --controller-namespace=Admin --form-helper=html
 
+php artisan crud:generate Orders --fields="customer_name#string; item_id#integer; item_code#string; orderd_date#date; delivery_date#date; Location_address#string; city_code#string; deliverd#string; quantity#integer; totalCost#double " --foreign-keys="item_id#id#items " --relationships="item_id#id#items#HasOneOrMany#App\Item" --view-path=admin --controller-namespace=Admin --route-group=admin --form-helper=html
+
+php artisan crud:generate Rejects --fields="order_id#string; rijected_date#date; item_id#string; quantity#string " --foreign-keys="order_id#id#orders" --relationships="order_id#id#orders#HasOne#App\Order" --view-path=Admin --controller-namespace=Admin --form-helper=html
+
+
+
+add coloum for table
+
+php artisan make:migration add_quantity_to_items_table
 
 
 
@@ -36,7 +43,17 @@ Trincomalee
 Vavuniya
 
 
+$table->foreign('order_id')->references('id')->on('orders')->sign;
 
+Get Values
+
+find($id) - takes an id and returns a single model. If no matching model exist, it returns null.
+findOrFail($id) - takes an id and returns a single model. If no matching model exist, it throws an error1.
+first() - returns the first record found in the database. If no matching model exist, it returns null.
+firstOrFail() - returns the first record found in the database. If no matching model exist, it throws an error1.
+get() - returns a collection of models matching the query.
+pluck($column) - returns a collection of just the values in the given column. In previous versions of Laravel this method was called lists.
+toArray() - converts the model/collection into a simple PHP array.
 
 
 

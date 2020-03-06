@@ -25,7 +25,7 @@ class Order extends Model
      *
      * @var array
      */
-    protected $fillable = ['customer_name', 'item_id', 'item_code', 'orderd_date', 'delivery_date', 'Location', 'city'];
+    protected $fillable = ['customer_name', 'item_id', 'item_code', 'orderd_date', 'delivery_date', 'Location_address', 'city_code', 'deliverd', 'quantity', 'totalCost'];
 
     
 }

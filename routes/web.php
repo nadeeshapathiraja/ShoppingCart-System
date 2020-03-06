@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//
+
+Route::resource('citys', 'Admin\\CitysController')->middleware('auth');
+
+Route::resource('items', 'Admin\\ItemsController')->middleware('auth');
+Route::resource('admin/orders', 'Admin\\OrdersController')->middleware('auth');
+Route::resource('rejects', 'Admin\\RejectsController')->middleware('auth');

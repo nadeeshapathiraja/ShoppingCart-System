@@ -14,29 +14,29 @@
             </ul>
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('admin/students') }}">
-                        Student
+                    <a href="{{ url('items') }}">
+                        Items
                     </a>
                 </li>
             </ul>
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('admin/cources') }}">
-                        Courses
+                    <a href="{{ url('admin/orders') }}">
+                        Orders
                     </a>
                 </li>
             </ul>
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('admin/teachers') }}">
-                        Teachers
+                    <a href="{{ url('citys') }}">
+                        City
                     </a>
                 </li>
             </ul>
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('admin/batches') }}">
-                        Batches
+                    <a href="{{ url('rejects') }}">
+                        Rejected Orders
                     </a>
                 </li>
             </ul>

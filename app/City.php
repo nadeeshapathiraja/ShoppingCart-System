@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class City extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'items';
+    protected $table = 'citys';
 
     /**
     * The database primary key value.
@@ -25,7 +25,7 @@ class Item extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'item_code', 'price', 'photo', 'order_type', 'colour', 'quantity'];
+    protected $fillable = ['name', 'price'];
 
     
 }
