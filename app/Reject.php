@@ -27,5 +27,9 @@ class Reject extends Model
      */
     protected $fillable = ['order_id', 'rijected_date', 'item_id', 'quantity'];
 
-    
+
+    public function item(){
+        return $this->belongsTo('App\Item');
+    }
+
 }

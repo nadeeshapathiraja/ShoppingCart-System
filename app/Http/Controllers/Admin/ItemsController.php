@@ -10,11 +10,12 @@ use Illuminate\Http\Request;
 
 class ItemsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\View\View
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         $keyword = $request->get('search');
@@ -36,23 +37,13 @@ class ItemsController extends Controller
         return view('Admin.items.index', compact('items'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\View\View
-     */
+
     public function create()
     {
         return view('Admin.items.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
+
     public function store(Request $request)
     {
 
@@ -67,13 +58,7 @@ class ItemsController extends Controller
         return redirect('items')->with('flash_message', 'Item added!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
+
     public function show($id)
     {
         $item = Item::findOrFail($id);
@@ -81,13 +66,7 @@ class ItemsController extends Controller
         return view('Admin.items.show', compact('item'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
+
     public function edit($id)
     {
         $item = Item::findOrFail($id);
@@ -95,14 +74,7 @@ class ItemsController extends Controller
         return view('Admin.items.edit', compact('item'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
+
     public function update(Request $request, $id)
     {
 
@@ -118,13 +90,7 @@ class ItemsController extends Controller
         return redirect('items')->with('flash_message', 'Item updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
+
     public function destroy($id)
     {
         Item::destroy($id);

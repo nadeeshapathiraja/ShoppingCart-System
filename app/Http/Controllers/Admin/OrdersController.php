@@ -15,6 +15,11 @@ use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         $keyword = $request->get('search');
@@ -42,7 +47,11 @@ class OrdersController extends Controller
 
     public function create()
     {
-        return view('admin.orders.create');
+        $items =Item::all();
+        $citys =City::all();
+        return view('admin.orders.create',compact('items','citys'));
+
+
     }
 
 
@@ -61,10 +70,6 @@ class OrdersController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        // $items= Item::get();
-        $item_names = DB::table('items')->select('name')->get();
-        return $item_names;
-
         return view('admin.orders.show', compact('order'));
 
 
@@ -75,8 +80,9 @@ class OrdersController extends Controller
     public function edit($id)
     {
         $order = Order::findOrFail($id);
-
-        return view('admin.orders.edit', compact('order'));
+        $items =Item::all();
+        $citys =City::all();
+        return view('admin.orders.edit', compact('order','items','citys'));
     }
 
 

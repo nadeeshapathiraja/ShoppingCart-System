@@ -30,14 +30,20 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Order Id</th><th>Rijected Date</th><th>Item Id</th><th>Actions</th>
+                                        <th>#</th>
+                                        <th>Order Id</th>
+                                        <th>Rijected Date</th>
+                                        <th>Item Name</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($rejects as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->order_id }}</td><td>{{ $item->rijected_date }}</td><td>{{ $item->item_id }}</td>
+                                        <td>{{ $item->order_id }}</td>
+                                        <td>{{ $item->rijected_date }}</td>
+                                        <td>{{ $item->item->name }}</td>
                                         <td>
                                             <a href="{{ url('/rejects/' . $item->id) }}" title="View Reject"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/rejects/' . $item->id . '/edit') }}" title="Edit Reject"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

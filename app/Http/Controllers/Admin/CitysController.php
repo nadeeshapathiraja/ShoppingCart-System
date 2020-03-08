@@ -10,13 +10,15 @@ use Illuminate\Http\Request;
 
 class CitysController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\View\View
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
+
         $keyword = $request->get('search');
         $perPage = 10;
 
@@ -31,23 +33,13 @@ class CitysController extends Controller
         return view('Admin.citys.index', compact('citys'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\View\View
-     */
+
     public function create()
     {
         return view('Admin.citys.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
+
     public function store(Request $request)
     {
 
@@ -58,13 +50,7 @@ class CitysController extends Controller
         return redirect('citys')->with('flash_message', 'City added!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
+
     public function show($id)
     {
         $city = City::findOrFail($id);
@@ -72,13 +58,7 @@ class CitysController extends Controller
         return view('Admin.citys.show', compact('city'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
+
     public function edit($id)
     {
         $city = City::findOrFail($id);
@@ -86,14 +66,7 @@ class CitysController extends Controller
         return view('Admin.citys.edit', compact('city'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
+
     public function update(Request $request, $id)
     {
 
@@ -105,17 +78,13 @@ class CitysController extends Controller
         return redirect('citys')->with('flash_message', 'City updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
+
     public function destroy($id)
     {
         City::destroy($id);
 
         return redirect('citys')->with('flash_message', 'City deleted!');
     }
+
+
 }

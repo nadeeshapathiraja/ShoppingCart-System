@@ -6,7 +6,11 @@
 
 <div class="form-group {{ $errors->has('item_id') ? 'has-error' : ''}}">
     <label for="item_id" class="control-label">{{ 'Item Id' }}</label>
-    <input class="form-control" name="item_id" type="number" id="item_id" value="{{ isset($order->item_id) ? $order->item_id : ''}}" >
+    <select class="form-control" name="item_id" id="item_id" value="{{ isset($order->item_id) ? $order->item_id : ''}}">
+        @foreach ($items as $item)
+            <option value="{{ $item->id }}">{{ $item->name }}</option>
+        @endforeach
+    </select>
     {!! $errors->first('item_id', '<p class="help-block">:message</p>') !!}
 </div>
 
@@ -36,33 +40,10 @@
 
 <div class="form-group {{ $errors->has('city_code') ? 'has-error' : ''}}">
     <label for="city_code" class="control-label">{{ 'City' }}</label><br/>
-    <select id="city_code" name="city_code" class="browser-default custom-select custom-select-lg mb-3" value="{{ isset($item->city_code) ? $item->city_code : ''}}">
-        <option selected>Select Drop Off City</option>
-        <option value="1">Ampara</option>
-        <option value="2">Anuradhapura</option>
-        <option value="3">Badulla</option>
-        <option value="4">Batticaloa</option>
-        <option value="5">Colombo</option>
-        <option value="6">Galle</option>
-        <option value="7">Gampaha</option>
-        <option value="8">Hambantota</option>
-        <option value="9">Jaffna</option>
-        <option value="10">Kalutara</option>
-        <option value="11">Kandy</option>
-        <option value="12">Kegalle</option>
-        <option value="13">Kilinochchi</option>
-        <option value="14">Kurunegala</option>
-        <option value="15">Mannar</option>
-        <option value="16">Matale</option>
-        <option value="17">Matara</option>
-        <option value="18">Moneragala</option>
-        <option value="19">Mullaitivu</option>
-        <option value="20">Nuwara Eliya</option>
-        <option value="21">Polonnaruwa</option>
-        <option value="22">Puttalam</option>
-        <option value="23">Ratnapura</option>
-        <option value="24">Trincomalee</option>
-        <option value="25">Vavuniya</option>
+    <select class="form-control" name="city_code" id="city_code" value="{{ isset($order->city_code) ? $order->city_code : ''}}">
+        @foreach ($citys as $city)
+            <option value="{{ $city->id }}">{{ $city->name }}</option>
+        @endforeach
     </select>
     {!! $errors->first('city_code', '<p class="help-block">:message</p>') !!}
 </div>

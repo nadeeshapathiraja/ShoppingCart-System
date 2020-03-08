@@ -27,5 +27,9 @@ class Order extends Model
      */
     protected $fillable = ['customer_name', 'item_id', 'item_code', 'orderd_date', 'delivery_date', 'Location_address', 'city_code', 'deliverd', 'quantity', 'totalCost'];
 
-    
+    public function item(){
+        return $this->belongsTo('App\Item');
+    }
+
+
 }

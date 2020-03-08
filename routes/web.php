@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,10 +22,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//
-
-Route::resource('citys', 'Admin\\CitysController')->middleware('auth');
-
-Route::resource('items', 'Admin\\ItemsController')->middleware('auth');
-Route::resource('admin/orders', 'Admin\\OrdersController')->middleware('auth');
-Route::resource('rejects', 'Admin\\RejectsController')->middleware('auth');
+//Develper make routes
+Route::resource('citys', 'Admin\\CitysController');
+Route::resource('items', 'Admin\\ItemsController');
+Route::resource('admin/orders', 'Admin\\OrdersController');
+Route::resource('rejects', 'Admin\\RejectsController');

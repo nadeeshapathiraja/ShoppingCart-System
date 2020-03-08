@@ -37,7 +37,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Customer Name</th>
-                                        <th>Item Id</th>
+                                        <th>Item Name</th>
                                         <th>Item Code</th>
                                         <th>Deliverd</th>
                                         <th>Actions</th>
@@ -49,7 +49,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->customer_name }}</td>
-                                            <td>{{ $item->item_id }}</td>
+                                            <td>{{ $item->item->name }}</td>
                                             <td>{{ $item->item_code }}</td>
                                             <td>
                                                 @if($item->deliverd)

@@ -10,7 +10,11 @@
 </div>
 <div class="form-group {{ $errors->has('item_id') ? 'has-error' : ''}}">
     <label for="item_id" class="control-label">{{ 'Item Id' }}</label>
-    <input class="form-control" name="item_id" type="text" id="item_id" value="{{ isset($reject->item_id) ? $reject->item_id : ''}}" >
+    <select class="form-control" name="item_id" id="item_id" value="{{ isset($order->item_id) ? $order->item_id : ''}}">
+        @foreach ($items as $item)
+            <option value="{{ $item->id }}">{{ $item->name }}</option>
+        @endforeach
+    </select>
     {!! $errors->first('item_id', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('quantity') ? 'has-error' : ''}}">
