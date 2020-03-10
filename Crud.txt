@@ -6,7 +6,7 @@ php artisan crud:generate Orders --fields="customer_name#string; item_id#integer
 
 php artisan crud:generate Rejects --fields="order_id#string; rijected_date#date; item_id#string; quantity#string " --foreign-keys="order_id#id#orders " --relationships="order_id#id#orders#HasOne#App\Order" --view-path=Admin --controller-namespace=Admin --form-helper=html
 
-php artisan crud:generate Totals --fields="order_id#string; item_id#integer; city_id#integer; total_price#double " --foreign-keys="order_id#id#orders; item_id#id#items; city_id#id#citys" --relationships="order_id#id#orders#HasOne#App\Order, item_id#id#items#HasOne#App\Item, city_id#id#citys#HasOne#App\City" --view-path=Admin --controller-namespace=Admin --form-helper=html
+php artisan crud:generate Totals --fields="order_id#integer; item_id#integer; city_id#integer; total_price#double " --foreign-keys="order_id#id#orders; item_id#id#items; city_id#id#citys" --relationships="order_id#id#orders#HasOne#App\Order, item_id#id#items#HasOne#App\Item, city_id#id#citys#HasOne#App\City" --view-path=Admin --controller-namespace=Admin --form-helper=html
 
 
 

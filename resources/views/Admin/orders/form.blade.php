@@ -8,9 +8,14 @@
     <label for="item_id" class="control-label">{{ 'Item Id' }}</label>
     <select class="form-control" name="item_id" id="item_id" value="{{ isset($order->item_id) ? $order->item_id : ''}}">
         @foreach ($items as $item)
-            <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @if($formMode === 'edit')
+                <option value="{{ $item->id }}" {{ ( $item->id == $order->item_id) ? 'selected' : '' }}>{{ $item->name }}</option>
+            @else
+                <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @endif
         @endforeach
     </select>
+
     {!! $errors->first('item_id', '<p class="help-block">:message</p>') !!}
 </div>
 

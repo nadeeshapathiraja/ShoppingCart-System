@@ -66,7 +66,7 @@
                                     </tr>
                                     <tr>
                                         <th> Total Cost </th>
-                                        <td> {{ $order->totalCost }} </td>
+                                        <td> {{ $total_price }} </td>
                                     </tr>
 
 

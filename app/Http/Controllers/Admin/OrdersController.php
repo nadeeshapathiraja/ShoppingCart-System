@@ -9,9 +9,11 @@ use App\Http\Requests;
 use App\Order;
 use App\Item;
 use App\City;
-use DB;
+use App\Total;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
 
 class OrdersController extends Controller
 {
@@ -56,7 +58,6 @@ class OrdersController extends Controller
         $citys =City::all();
         return view('admin.orders.create',compact('items','citys'));
 
-
     }
 
 
@@ -64,8 +65,20 @@ class OrdersController extends Controller
     {
 
         $requestData = $request->all();
+        $order = Order::create($requestData);
 
-        Order::create($requestData);
+        $item = DB::table('items')->where('id',$order->item_id)->first();
+        $item_price = $item->price;
+
+        $city = DB::table('citys')->where('id',$order->city_code)->first();
+        $city_price = $city->price;
+
+        $total = new Total();
+        $total->order_id = $order->id;
+        $total->item_id = $order->item_id;
+        $total->city_id = $order->city_code;
+        $total->total_price = $item_price + $city_price;
+        $total->save();
 
         return redirect('admin/orders')->with('flash_message', 'Order added!');
     }
@@ -75,7 +88,9 @@ class OrdersController extends Controller
     {
         $order = Order::findOrFail($id);
         $citys =City::all();
-        return view('admin.orders.show', compact('order','citys'));
+        $total = DB::table('totals')->where('order_id',$id)->first();
+        $total_price = $total->total_price;
+        return view('admin.orders.show', compact('order','citys','total_price'));
 
 
 
@@ -87,6 +102,7 @@ class OrdersController extends Controller
         $order = Order::findOrFail($id);
         $items =Item::all();
         $citys =City::all();
+        //$items=Item::pluck('name','id');
         return view('admin.orders.edit', compact('order','items','citys'));
     }
 
