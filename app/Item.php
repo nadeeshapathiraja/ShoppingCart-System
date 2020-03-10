@@ -27,5 +27,9 @@ class Item extends Model
      */
     protected $fillable = ['name', 'item_code', 'price', 'photo', 'order_type', 'colour', 'quantity'];
 
-    
+    public static function item_count(){
+        return Item::count();
+    }
+
+
 }

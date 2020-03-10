@@ -28,7 +28,7 @@
                         <br/>
                         <div class="table-responsive">
                             <table class="table">
-                                <thead>
+                                <thead class="thead-dark">
                                     <tr>
                                         <th>#</th>
                                         <th>Order Id</th>
@@ -41,7 +41,7 @@
                                 @foreach($rejects as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->order_id }}</td>
+                                        <td>{{ $item->order_id}}</td>
                                         <td>{{ $item->rijected_date }}</td>
                                         <td>{{ $item->item->name }}</td>
                                         <td>

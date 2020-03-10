@@ -31,5 +31,16 @@ class Order extends Model
         return $this->belongsTo('App\Item');
     }
 
+    public function city(){
+        return $this->belongsTo('App\City','city_code', 'id');
+    }
+
+    public static function order_count(){
+        return Order::count();
+    }
+
+    public function totalCost(){
+
+    }
 
 }

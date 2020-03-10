@@ -9,6 +9,12 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        {{-- Boostrap 4 --}}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
         <!-- Styles -->
         <style>
             html, body {
@@ -61,6 +67,8 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+
         </style>
     </head>
     <body>
@@ -79,19 +87,80 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Shopping Cart System
-                </div>
+            <div class="container mt-3">
 
-                <div class="links">
-                    <a href="citys">City</a>
-                    <a href="items">Item</a>
-                    <a href="admin/orders">Order</a>
-                    <a href="rejects">Rejected Orders</a>
+                <div id="myCarousel" class="carousel slide">
 
-                </div>
-            </div>
+
+                    <div class="row">
+
+                        @include('admin.sidebar')
+
+                    <div class="col-md-9">
+                        <!-- Indicators -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h1>Erandha Shopping Cart</h1><br/><br/><br/>
+                        <ul class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ul>
+                        <!-- The slideshow -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="images/4.jfif" width="600" height="300">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/2.jpg" width="600" height="300">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/3.jfif" width="600" height="300">
+                                </div>
+
+                            </div>
+
+                                <!-- Left and right controls -->
+                                <a class="carousel-control-prev" href="#myCarousel">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a class="carousel-control-next" href="#myCarousel">
+                                    <span class="carousel-control-next-icon"></span>
+                                </a>
+
+                        <script>
+                            $(document).ready(function(){
+                            // Activate Carousel with a specified interval
+                            $("#myCarousel").carousel({interval: 500});
+
+                            // Enable Carousel Indicators
+                            $(".item1").click(function(){
+                                $("#myCarousel").carousel(0);
+                            });
+                            $(".item2").click(function(){
+                                $("#myCarousel").carousel(1);
+                            });
+                            $(".item3").click(function(){
+                                $("#myCarousel").carousel(2);
+                            });
+
+                            // Enable Carousel Controls
+                            $(".carousel-control-prev").click(function(){
+                                $("#myCarousel").carousel("prev");
+                            });
+                            $(".carousel-control-next").click(function(){
+                                $("#myCarousel").carousel("next");
+                            });
+                            });
+                        </script>
+                    </div>
+                            </div>
+                          </div>
+
+
+
+
+
         </div>
     </body>
 </html>

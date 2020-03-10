@@ -54,11 +54,11 @@
     {!! $errors->first('quantity', '<p class="help-block">:message</p>') !!}
 </div>
 
-<div class="form-group {{ $errors->has('totalCost') ? 'has-error' : ''}}">
+{{-- <div class="form-group {{ $errors->has('totalCost') ? 'has-error' : ''}}">
     <label for="totalCost" class="control-label">{{ 'Totalcost' }}</label>
     <input class="form-control" name="totalCost" type="number" id="totalCost" value="{{ isset($order->totalCost) ? $order->totalCost : ''}}" >
     {!! $errors->first('totalCost', '<p class="help-block">:message</p>') !!}
-</div>
+</div> --}}
 
 <div class="form-group {{ $errors->has('city_code') ? 'has-error' : ''}}">
     <label for="deliverd" class="control-label">{{ 'Deliverd' }}</label><br/>

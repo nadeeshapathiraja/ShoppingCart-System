@@ -31,5 +31,12 @@ class Reject extends Model
     public function item(){
         return $this->belongsTo('App\Item');
     }
+    public function order(){
+        return $this->belongsTo('App\Order');
+    }
+
+    public static function reject_count(){
+        return Reject::count();
+    }
 
 }

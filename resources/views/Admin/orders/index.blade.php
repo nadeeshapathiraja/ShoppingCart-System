@@ -31,7 +31,7 @@
                         <br/>
 
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-dark">
 
                                 <thead>
                                     <tr>
@@ -39,6 +39,7 @@
                                         <th>Customer Name</th>
                                         <th>Item Name</th>
                                         <th>Item Code</th>
+                                        <th>City</th>
                                         <th>Deliverd</th>
                                         <th>Actions</th>
                                     </tr>
@@ -51,6 +52,7 @@
                                             <td>{{ $item->customer_name }}</td>
                                             <td>{{ $item->item->name }}</td>
                                             <td>{{ $item->item_code }}</td>
+                                            <td>{{ $item->city->name }}</td>
                                             <td>
                                                 @if($item->deliverd)
                                                     <button class="btn btn-success">Completed</button>

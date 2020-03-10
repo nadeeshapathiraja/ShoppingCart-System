@@ -10,7 +10,7 @@
 
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+
 
                 <div class="card-body">
                     @if (session('status'))
@@ -19,7 +19,43 @@
                         </div>
                     @endif
 
-                    WELCOME TO HOME PAGE
+
+                        <div class="well">
+                          <h3>Admin Dashboard</h3>
+                        </div>
+                        <br/><br/><br/>
+
+                        <div class="row">
+
+                          <div class="col-sm-4">
+                            <div class="well">
+                              <h4>Item Count</h4>
+                                <div class="alert alert-success">
+                                    No of Items: {{ $ic }}
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-4">
+                            <div class="well">
+                              <h4>Order Count</h4>
+                                <div class="alert alert-primary">
+                                    No of Orders: {{ $oc }}
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-4">
+                            <div class="well">
+                              <h4>Rejection Count</h4>
+                                <div class="alert alert-danger">
+                                    rejected Orders: {{ $rc }}
+                                </div>
+                            </div>
+                          </div>
+
+                        </div>
+
                 </div>
             </div>
         </div>

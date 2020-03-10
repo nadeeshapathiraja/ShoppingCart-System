@@ -27,3 +27,4 @@ Route::resource('citys', 'Admin\\CitysController');
 Route::resource('items', 'Admin\\ItemsController');
 Route::resource('admin/orders', 'Admin\\OrdersController');
 Route::resource('rejects', 'Admin\\RejectsController');
+

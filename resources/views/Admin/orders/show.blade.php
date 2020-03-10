@@ -41,17 +41,32 @@
                                         <th>ID</th>
                                         <td>{{ $order->id }}</td>
                                     </tr>
+
                                     <tr>
                                         <th> Customer Name </th>
                                         <td> {{ $order->customer_name }} </td>
                                     </tr>
+
                                     <tr>
                                         <th> Item Id </th>
                                         <td> {{ $order->item->name }} </td>
                                     </tr>
+
                                     <tr>
                                         <th> Item Code </th>
                                         <td> {{ $order->item_code }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> City </th>
+                                        <td> {{ $order->city->name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Delivery Address </th>
+                                        <td> {{ $order->Location_address }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Total Cost </th>
+                                        <td> {{ $order->totalCost }} </td>
                                     </tr>
 
 

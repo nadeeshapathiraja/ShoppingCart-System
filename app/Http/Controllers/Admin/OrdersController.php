@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use PhpParser\Node\Stmt\Return_;
 use App\Http\Requests;
 
 use App\Order;
@@ -15,6 +16,8 @@ use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
 
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -22,6 +25,9 @@ class OrdersController extends Controller
 
     public function index(Request $request)
     {
+
+
+
         $keyword = $request->get('search');
         $perPage = 10;
 
@@ -35,7 +41,6 @@ class OrdersController extends Controller
                 ->orWhere('city_code', 'LIKE', "%$keyword%")
                 ->orWhere('deliverd', 'LIKE', "%$keyword%")
                 ->orWhere('quantity', 'LIKE', "%$keyword%")
-                ->orWhere('totalCost', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
             $orders = Order::latest()->paginate($perPage);
@@ -69,8 +74,8 @@ class OrdersController extends Controller
     public function show($id)
     {
         $order = Order::findOrFail($id);
-
-        return view('admin.orders.show', compact('order'));
+        $citys =City::all();
+        return view('admin.orders.show', compact('order','citys'));
 
 
 
