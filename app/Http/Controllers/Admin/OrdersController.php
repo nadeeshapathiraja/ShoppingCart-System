@@ -73,6 +73,8 @@ class OrdersController extends Controller
         $city = DB::table('citys')->where('id',$order->city_code)->first();
         $city_price = $city->price;
 
+
+
         $total = new Total();
         $total->order_id = $order->id;
         $total->item_id = $order->item_id;
