@@ -7,6 +7,11 @@ use PhpParser\Node\Stmt\Return_;
 use App\Http\Requests;
 
 use App\Item;
+use App\Order;
+use App\City;
+use App\Total;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class ItemsController extends Controller
@@ -20,7 +25,7 @@ class ItemsController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 10;
+        $perPage = 5;
 
         if (!empty($keyword)) {
             $items = Item::where('name', 'LIKE', "%$keyword%")
@@ -54,7 +59,37 @@ class ItemsController extends Controller
                 ->store('uploads', 'public');
         }
 
-        Item::create($requestData);
+
+
+        //New Changes
+        $requestData = $request->all();
+        $item = Item::create($requestData);
+
+        if($item->item_id){
+
+            $order = DB::table('orders')->where('item_id',$item->item_id)->first();
+            $order_quantity=$order->quantity;
+
+            $item = DB::table('items')->where('id',$order->item_id)->first();
+            $item_quantity=$item->quantity;
+
+            $rejection = DB::table('rejects')->where('item_id',$item->item_id)->first();
+            $reject_quantity = $rejection->quantity;
+
+            if($order->item_id){
+                if($rejection->item_id){
+                    $item->quantity =$item_quantity + $reject_quantity - $order_quantity;
+                }else{
+                    $item->quantity =$item_quantity - $order_quantity;
+                }
+            }
+
+            Item::create($requestData);
+
+        }
+
+
+
 
         return redirect('items')->with('flash_message', 'Item added!');
     }

@@ -25,9 +25,25 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $item->id }}</td>
+                                        <th>ID</th>
+                                        <td>{{ $item->id }}</td>
                                     </tr>
-                                    <tr><th> Name </th><td> {{ $item->name }} </td></tr><tr><th> Item Code </th><td> {{ $item->item_code }} </td></tr><tr><th> Price </th><td> {{ $item->price }} </td></tr>
+                                    <tr>
+                                        <th> Name </th>
+                                        <td> {{ $item->name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Item Code </th>
+                                        <td> {{ $item->item_code }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Price </th>
+                                        <td> {{ $item->price }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Item Quantity </th>
+                                        <td> {{ $item->quantity }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

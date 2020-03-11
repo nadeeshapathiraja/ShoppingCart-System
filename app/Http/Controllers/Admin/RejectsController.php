@@ -22,7 +22,7 @@ class RejectsController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 10;
+        $perPage = 5;
 
         if (!empty($keyword)) {
             $rejects = Reject::where('order_id', 'LIKE', "%$keyword%")

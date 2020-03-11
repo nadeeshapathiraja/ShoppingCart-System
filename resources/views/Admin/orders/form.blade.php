@@ -47,7 +47,11 @@
     <label for="city_code" class="control-label">{{ 'City' }}</label><br/>
     <select class="form-control" name="city_code" id="city_code" value="{{ isset($order->city_code) ? $order->city_code : ''}}">
         @foreach ($citys as $city)
-            <option value="{{ $city->id }}">{{ $city->name }}</option>
+            @if($formMode === 'edit')
+                <option value="{{ $city->id }}" {{ ( $city->id == $order->city_code) ? 'selected' : '' }}>{{ $city->name }}</option>
+            @else
+                <option value="{{ $city->id }}">{{ $city->name }}</option>
+            @endif
         @endforeach
     </select>
     {!! $errors->first('city_code', '<p class="help-block">:message</p>') !!}

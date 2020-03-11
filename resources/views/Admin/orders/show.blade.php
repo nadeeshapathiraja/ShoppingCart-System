@@ -65,10 +65,21 @@
                                         <td> {{ $order->Location_address }} </td>
                                     </tr>
                                     <tr>
+                                        <th> Item Quantity </th>
+                                        <td> {{ $order->quantity }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Ordered Date </th>
+                                        <td> {{ $order->orderd_date }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Deliverd Date </th>
+                                        <td> {{ $order->delivery_date }} </td>
+                                    </tr>
+                                    <tr>
                                         <th> Total Cost </th>
                                         <td> {{ $total_price }} </td>
                                     </tr>
-
 
                                 </tbody>
 

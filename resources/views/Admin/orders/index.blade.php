@@ -6,7 +6,7 @@
             @include('admin.sidebar')
 
             <div class="col-md-9">
-                <div class="card">
+                <div class="card" style="width: 1000px;">
 
                     <div class="card-header">Orders</div>
 
@@ -15,6 +15,8 @@
                         <a href="{{ url('/admin/orders/create') }}" class="btn btn-success btn-sm" title="Add New Order">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
+
+                        {{--  <a href="{{ route('orders.excel')}}" class="btn btn-primary btn-sm">Export CSV file</a>  --}}
 
                         <form method="GET" action="{{ url('/admin/orders') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
@@ -29,6 +31,8 @@
 
                         <br/>
                         <br/>
+
+
 
                         <div class="table-responsive">
                             <table class="table table-dark">

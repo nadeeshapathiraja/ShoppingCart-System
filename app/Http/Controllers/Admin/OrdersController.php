@@ -31,7 +31,7 @@ class OrdersController extends Controller
 
 
         $keyword = $request->get('search');
-        $perPage = 10;
+        $perPage = 5;
 
         if (!empty($keyword)) {
             $orders = Order::where('customer_name', 'LIKE', "%$keyword%")
@@ -49,7 +49,13 @@ class OrdersController extends Controller
         }
 
         return view('admin.orders.index', compact('orders'));
+
+
     }
+
+    // public function excel(){
+
+    // }
 
 
     public function create()
@@ -66,9 +72,12 @@ class OrdersController extends Controller
 
         $requestData = $request->all();
         $order = Order::create($requestData);
+        $order_quantity=$order->quantity;
+
 
         $item = DB::table('items')->where('id',$order->item_id)->first();
         $item_price = $item->price;
+
 
         $city = DB::table('citys')->where('id',$order->city_code)->first();
         $city_price = $city->price;
@@ -79,8 +88,10 @@ class OrdersController extends Controller
         $total->order_id = $order->id;
         $total->item_id = $order->item_id;
         $total->city_id = $order->city_code;
-        $total->total_price = $item_price + $city_price;
+        $total->total_price = ($item_price*$order_quantity) + $city_price;
         $total->save();
+
+
 
         return redirect('admin/orders')->with('flash_message', 'Order added!');
     }
