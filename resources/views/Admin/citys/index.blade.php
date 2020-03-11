@@ -27,7 +27,7 @@
                         <br/>
                         <br/>
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-dark">
                                 <thead>
                                     <tr>
                                         <th>#</th>

@@ -27,8 +27,8 @@
                         <br/>
                         <br/>
                         <div class="table-responsive">
-                            <table class="table">
-                                <thead class="thead-dark">
+                            <table class="table table-dark">
+                                <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Order Id</th>

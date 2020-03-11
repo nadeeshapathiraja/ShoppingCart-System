@@ -16,7 +16,6 @@
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
-                        {{--  <a href="{{ route('orders.excel')}}" class="btn btn-primary btn-sm">Export CSV file</a>  --}}
 
                         <form method="GET" action="{{ url('/admin/orders') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">

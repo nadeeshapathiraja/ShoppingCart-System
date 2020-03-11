@@ -53,9 +53,7 @@ class OrdersController extends Controller
 
     }
 
-    // public function excel(){
-
-    // }
+    
 
 
     public function create()

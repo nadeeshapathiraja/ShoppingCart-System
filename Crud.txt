@@ -1,4 +1,4 @@
-php artisan crud:generate Citys --fields="name#string; price#double;" --view-path=Admin --controller-namespace=Admin --form-helper=html
+php artisan crud:generate City --fields="name#string; price#double;" --view-path=Admin --controller-namespace=Admin --form-helper=html
 
 php artisan crud:generate Items --fields="name#string; item_code#string; price#double; photo#file; order_type#string; colour#string; quantity#integer;" --view-path=Admin --controller-namespace=Admin --form-helper=html
 
@@ -9,14 +9,23 @@ php artisan crud:generate Rejects --fields="order_id#string; rijected_date#date;
 php artisan crud:generate Totals --fields="order_id#integer; item_id#integer; city_id#integer; total_price#double " --foreign-keys="order_id#id#orders; item_id#id#items; city_id#id#citys" --relationships="order_id#id#orders#HasOne#App\Order, item_id#id#items#HasOne#App\Item, city_id#id#citys#HasOne#App\City" --view-path=Admin --controller-namespace=Admin --form-helper=html
 
 
+//After meeting added
 
-add coloum for table
+php artisan crud:generate Delivers --fields="company_name#string; order_id#integer; tracking_number#string " --foreign-keys="order_id#id#orders " --relationships="order_id#id#orders#HasMany#App\Order" --view-path=Admin --controller-namespace=Admin --form-helper=html
+
+php artisan crud:generate Mainproducts --fields="name#string; order_id#integer; " --view-path=Admin --controller-namespace=Admin --form-helper=html
+
+php artisan crud:generate Brands --fields="name#string; category_id#integer; " --view-path=Admin --controller-namespace=Admin --form-helper=html
+
+
+
+//add coloum for table
 
 php artisan make:migration add_quantity_to_items_table
 
 
 
-Districts
+//Districts
 
 Ampara
 Anuradhapura
@@ -47,7 +56,7 @@ Vavuniya
 
 $table->foreign('order_id')->references('id')->on('orders')->sign;
 
-Get Values
+//Get Values
 
 find($id) - takes an id and returns a single model. If no matching model exist, it returns null.
 findOrFail($id) - takes an id and returns a single model. If no matching model exist, it throws an error1.
