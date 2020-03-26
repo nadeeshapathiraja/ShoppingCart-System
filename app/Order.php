@@ -29,7 +29,7 @@ class Order extends Model
 
     public function item(){
         return $this->belongsTo('App\Item');
-    }
+    }       
 
     public function city(){
         return $this->belongsTo('App\City','city_code', 'id');

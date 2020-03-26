@@ -53,7 +53,7 @@ class OrdersController extends Controller
 
     }
 
-    
+
 
 
     public function create()
@@ -72,9 +72,12 @@ class OrdersController extends Controller
         $order = Order::create($requestData);
         $order_quantity=$order->quantity;
 
-
         $item = DB::table('items')->where('id',$order->item_id)->first();
         $item_price = $item->price;
+        $item_quantity=$item->quantity;
+
+
+        DB::table('items')->update(['quantity' => ($item_quantity-$order_quantity)]);
 
 
         $city = DB::table('citys')->where('id',$order->city_code)->first();

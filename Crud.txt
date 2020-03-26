@@ -13,7 +13,7 @@ php artisan crud:generate Totals --fields="order_id#integer; item_id#integer; ci
 
 php artisan crud:generate Delivers --fields="company_name#string; order_id#integer; tracking_number#string " --foreign-keys="order_id#id#orders " --relationships="order_id#id#orders#HasMany#App\Order" --view-path=Admin --controller-namespace=Admin --form-helper=html
 
-php artisan crud:generate Mainproducts --fields="name#string; order_id#integer; " --view-path=Admin --controller-namespace=Admin --form-helper=html
+php artisan crud:generate Categorys --fields="name#string; order_id#integer; " --view-path=Admin --controller-namespace=Admin --form-helper=html
 
 php artisan crud:generate Brands --fields="name#string; category_id#integer; " --view-path=Admin --controller-namespace=Admin --form-helper=html
 

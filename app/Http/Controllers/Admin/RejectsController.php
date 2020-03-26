@@ -9,6 +9,9 @@ use App\Http\Requests;
 use App\Reject;
 use App\Order;
 use App\Item;
+use App\City;
+use App\Total;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class RejectsController extends Controller
@@ -49,8 +52,14 @@ class RejectsController extends Controller
     {
 
         $requestData = $request->all();
-
         Reject::create($requestData);
+        $rejection = Reject::create($requestData);
+        $reject_quantity = $rejection->quantity;
+
+        $item = DB::table('items')->where('id',$rejection->item_id)->first();
+        $item_quantity=$item->quantity;
+
+        DB::table('items')->update(['quantity' => ($item_quantity + $reject_quantity)]);
 
         return redirect('rejects')->with('flash_message', 'Reject added!');
     }
